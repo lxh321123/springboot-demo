@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    username: ${DB_USERNAME:root}                    # 优先读环境变量，默认 root
+    password: ${DB_PASSWORD:lxh3797519}              # 优先读环境变量，默认开发密码
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springboot-database?useSSL=false&serverTimeZone=Asia/Shanghai&CharacterEncoding=utf8
+  mybatis:
+    configuration:
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

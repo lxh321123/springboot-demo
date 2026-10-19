@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    username: ${DB_USERNAME}                          # 没有默认值，必须通过环境变量提供
+    password: ${DB_PASSWORD}                          # 生产密码绝不留默认，强制环境变量注入
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/springboot-database?...
+  mybatis:
+    configuration:
+      log-impl: org.apache.ibatis.logging.stdout.StdOutImpl    # 生产去掉 SQL 日志，或换成别的
