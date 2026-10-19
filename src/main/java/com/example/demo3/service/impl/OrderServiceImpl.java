@@ -7,6 +7,7 @@ import com.example.demo3.exception.BusinessException;
 import com.example.demo3.mapper.OrderMapper;
 import com.example.demo3.mapper.ProductMapper;
 import com.example.demo3.service.OrderService;
+import com.example.demo3.vo.OrderVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -38,5 +39,12 @@ public class OrderServiceImpl implements OrderService {
         order.setCreateTime(LocalDateTime.now());
         order.setStatus(OrderStatus.PAID.getCode());
         orderMapper.insertOrder(order);
+    }
+
+    @Override
+    public OrderVo getOrderById(Integer productId) {
+        OrderVo orderVo = orderMapper.getOrderById(productId);
+        if(orderVo == null) throw new BusinessException("未查到相应的订单!");
+        return orderVo;
     }
 }
